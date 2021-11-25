@@ -27,10 +27,6 @@ public class Drink {
     @JsonIgnore
     private List<Rate> rates;
 
-
-
-
-
-
+    // change something
     public Drink() {}
 }
