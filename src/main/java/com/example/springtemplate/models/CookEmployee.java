@@ -10,8 +10,8 @@ public class CookEmployee extends Employee{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "employee_id",insertable = false, updatable = false)
-    private Integer employeeId;
+//    @Column(name = "employee_id",insertable = false, updatable = false)
+//    private Integer employeeId;
 
 //    @OneToOne
 //    @JsonIgnore
@@ -30,13 +30,13 @@ public class CookEmployee extends Employee{
         this.id = id;
     }
 
-    public Integer getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
-    }
+//    public Integer getEmployeeId() {
+//        return employeeId;
+//    }
+//
+//    public void setEmployeeId(Integer employeeId) {
+//        this.employeeId = employeeId;
+//    }
 //
 //    public Employee getEmployee() {
 //        return employee;
@@ -46,16 +46,16 @@ public class CookEmployee extends Employee{
 //        this.employee = employee;
 //    }
 
-    public CookEmployee(Integer employeeId) {
-        this.employeeId = employeeId;
-    }
+//    public CookEmployee(Integer employeeId) {
+//        this.employeeId = employeeId;
+//    }
 
     public List<DrinkAssign2Cook> getDrinkAssign2Cooks() {
         return drinkAssign2Cooks;
     }
 
     public CookEmployee(Integer employeeId, Employee employee, List<DrinkAssign2Cook> drinkAssign2Cooks) {
-        this.employeeId = employeeId;
+//        this.employeeId = employeeId;
 //        this.employee = employee;
         this.drinkAssign2Cooks = drinkAssign2Cooks;
     }

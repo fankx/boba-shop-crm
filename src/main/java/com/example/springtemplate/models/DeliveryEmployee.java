@@ -10,8 +10,8 @@ public class DeliveryEmployee extends Employee{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "employee_id",insertable = false, updatable = false)
-    private Integer employeeId;
+//    @Column(name = "employee_id",insertable = false, updatable = false)
+//    private Integer employeeId;
 
 //    @OneToOne
 //    @JsonIgnore
@@ -38,13 +38,13 @@ public class DeliveryEmployee extends Employee{
         this.id = id;
     }
 
-    public Integer getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
-    }
+//    public Integer getEmployeeId() {
+//        return employeeId;
+//    }
+//
+//    public void setEmployeeId(Integer employeeId) {
+//        this.employeeId = employeeId;
+//    }
 
     public List<OrderAssign2Delivery> getOrderAssignment() {
         return orderAssign2Delivery;
@@ -54,9 +54,9 @@ public class DeliveryEmployee extends Employee{
         this.orderAssign2Delivery = orderAssign2Delivery;
     }
 
-    public DeliveryEmployee(Integer employeeId) {
-        this.employeeId = employeeId;
-    }
+//    public DeliveryEmployee(Integer employeeId) {
+//        this.employeeId = employeeId;
+//    }
 
     public DeliveryEmployee() {}
 }
