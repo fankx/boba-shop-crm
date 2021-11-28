@@ -2,6 +2,7 @@ package com.example.springtemplate.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -9,7 +10,7 @@ import java.util.List;
 //@Inheritance(strategy = InheritanceType.JOINED)
 public class User extends Person{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String customerValue;
 
@@ -17,9 +18,9 @@ public class User extends Person{
 //    @JsonIgnore
 //    private Person person;
 
-//    @OneToMany(mappedBy = "user")
-//    @JsonIgnore
-//    private List<Order> orders;
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Order> orders;
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
@@ -65,10 +66,11 @@ public class User extends Person{
         this.rates = rates;
     }
 
-    public User(String customerValue, Person person, List<Order> orders, List<Rate> rates) {
-        this.customerValue = customerValue;
+    public User(String firstName, String lastName, String username, String password, String email, Date dateOfBirth,String customerValue, List<Order> orders, List<Rate> rates) {
+        super( firstName,  lastName,  username,  password,  email,  dateOfBirth);
+        setCustomerValue("0");
 //        this.person = person;
-//        this.orders = orders;
+        this.orders = orders;
         this.rates = rates;
     }
 

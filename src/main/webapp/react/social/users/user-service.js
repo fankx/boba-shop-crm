@@ -1,6 +1,8 @@
 // TODO: declare URL where server listens for HTTP requests
-const USERS_URL = "http://localhost:8080/api/users"
+//const USERS_URL = "https://restuarant-crm.herokuapp.com/api/users"
+// us-cdbr-east-04.cleardb.com/heroku_c6a34d11c0df5ab?reconnect=true?serverTimezone=UTC
 
+ const USERS_URL = "http://localhost:8080/api/users"
 // TODO: retrieve all users from the server
 export const findAllUsers = () =>
     fetch(USERS_URL)
