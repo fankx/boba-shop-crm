@@ -106,8 +106,16 @@ const UserFormEditor = () => {
                         setUser(user =>
                             ({...user, password: e.target.value}))}
                     value={user.password}/>
+
                 <br/>
-                <button // add a button
+
+
+
+
+
+
+
+                <button className="btn btn-warning"// add a button
                     onClick={() => { // when you click,use history to go back
                             history.back()}}>
                         Cancel
@@ -144,12 +152,12 @@ const UserFormEditor = () => {
                 {/*        DeleteAlert*/}
                 {/*</button>*/}
 
-                <button
+                <button className="btn btn-success"
                     onClick={() => createUser(user)}>
                         Create
                 </button>
 
-                <button
+                <button className="btn btn-primary"
                     onClick={() => updateUser(user.id, user)}>
                         Save
                 </button>
