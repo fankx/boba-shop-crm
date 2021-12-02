@@ -50,7 +50,7 @@ const UserFormEditor = () => {
                     value={user.lastName}/><br/>
 
                 <label>Birthday</label>
-                <input
+                <input placeholder={"yyyy-mm-dd"}
                     onChange={(e) =>
                         setUser(user =>
                             ({...user, dateOfBirth: e.target.value}))}
