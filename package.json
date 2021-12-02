@@ -1,0 +1,10 @@
+{
+  "name": "restauran_crm_draft",
+  "version": "1.0.0",
+  "dependencies": {
+    "element-react": "^1.4.34"
+  },
+  "devDependencies": {
+    "react-confirm-alert": "^2.7.0"
+  }
+}
