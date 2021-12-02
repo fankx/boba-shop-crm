@@ -12,7 +12,9 @@ const UserList = () => {
     const findAllUsers = () =>
         userService.findAllUsers()
             .then(users => setUsers(users))
-
+    const deleteUserTry = (id) =>{
+        userService.deleteUser(id)
+            .then(() => window.location.reload(false) )}
     return(
 
         <div>
@@ -24,16 +26,24 @@ const UserList = () => {
             <ul className="list-group">
                 {
                     users.map(user =>
-                        <li className = "list-group-item" key={user.id}>
+                        <li className = "list-group-item" style={{ display: "flex" }} key={user.id}>
                             <Link to={`/users/${user.id}`}>
-                            userID: {user.id},
-                            first name: {user.firstName},
+                            ID: {user.id}
+
+                            </Link>
+                            : first name: {user.firstName},
                             last name: {user.lastName},
                             username: {user.username},
-                                password: {user.password},
-                                email: {user.email},
-                                birthday: {user.dateOfBirth}
-                            </Link>
+                            password: {user.password},
+                            email: {user.email},
+                            birthday: {user.dateOfBirth},
+                            customer value: {user.customerValue}
+
+                            <button className="btn btn-danger" style={{ marginLeft: "auto" }}
+                                    onClick={() => {if (window.confirm('Are you sure you wish to delete this item?'))
+                                        deleteUserTry(user.id)}}>
+                                Delete
+                            </button>
                         </li>)
 
 

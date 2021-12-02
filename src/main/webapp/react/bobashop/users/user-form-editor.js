@@ -2,8 +2,7 @@ import userService from "./user-service"; // import user-service so we can fetch
 
 const {useState, useEffect} = React; // import React's hooks
 const {useParams, useHistory} = window.ReactRouterDOM; // import userParams to parse parameters from URL import useHistory
-import { MessageBox } from 'element-react';
-import { confirmAlert } from 'react-confirm-alert';
+
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const UserFormEditor = () => {
@@ -17,44 +16,25 @@ const UserFormEditor = () => {
         }, []);
         const createUser = (user) =>
             userService.createUser(user)
-                .then(() => history.goBack())
+                .then(() => {
+        alert("user is created");
+
+                })
 
         const findUserById = (id) =>// fetch a single user using their ID
             userService.findUserById(id)// use user service's new findUserById
                 .then(user => setUser(user)) //// store user from server to local user state variable
-        const deleteUser = (id) =>{
-                alert("trythis");
-            userService.deleteUser(id)
-                .then(() => history.goBack() )}
-        const deleteUserTry = (id) =>{
-                alert("trydelete?")
-                // confirmAlert({
-                //         title: 'Confirm to submit',
-                //         message: 'Are you sure to do this.',
-                //         buttons: [
-                //                 {
-                //                         label: 'Yes',
-                //                         onClick: () => alert('Click Yes')
-                //                 },
-                //                 {
-                //                         label: 'No',
-                //                         onClick: () => alert('Click No')
-                //                 }
-                //         ]
-                // })
 
-                userService.deleteUser(id)
-                    .then(() => history.goBack() )}
         const updateUser = (id, newUser) =>
             userService.updateUser(id, newUser)
-                .then(() => history.goBack())
+                .then(() => history.back())
 
 
         return (
         <div>
                 <h2>User Editor</h2>
-                <label>ID</label>
-                <input value={user.id}/><br/>
+                {/*<label>ID</label>*/}
+                {/*<input value={user.id}/><br/>*/}
                 <label>First Name</label>
                 <input
                     onChange={(e) =>
@@ -123,50 +103,18 @@ const UserFormEditor = () => {
                 <button className="btn btn-warning"// add a button
                     onClick={() => { // when you click,use history to go back
                             history.back()}}>
-                        Cancel
+                        Back
                 </button>
 
-                <button className="btn btn-danger"
-
-                    onClick={() => deleteUser(user.id)}>
-                        DeleteOld
-                </button>
-
-                <button className="btn btn-danger"
-
-                        onClick={() => {if (window.confirm('Are you sure you wish to delete this item?'))
-
-                                deleteUserTry(user.id)}}>
-                        Delete try
-                </button>
-
-                {/*<button*/}
-
-                {/*    onClick={() => { MessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示', {*/}
-                {/*            type: 'warning'*/}
-                {/*    }).then(() => {*/}
-                {/*            Message({*/}
-                {/*                    type: 'success',*/}
-                {/*                    message: '删除成功!'*/}
-                {/*            });*/}
-                {/*    }).catch(() => {*/}
-                {/*            Message({*/}
-                {/*                    type: 'info',*/}
-                {/*                    message: '已取消删除'*/}
-                {/*            });*/}
-                {/*    });*/}
-                {/*            deleteUser(user.id)}}>*/}
-                {/*        DeleteAlert*/}
-                {/*</button>*/}
 
                 <button className="btn btn-success"
                     onClick={() => createUser(user)}>
-                        Create
+                        Create User
                 </button>
 
                 <button className="btn btn-primary"
                     onClick={() => updateUser(user.id, user)}>
-                        Save
+                        Save Updated
                 </button>
 
         </div>
