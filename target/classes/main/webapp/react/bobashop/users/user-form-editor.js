@@ -18,6 +18,7 @@ const UserFormEditor = () => {
             userService.createUser(user)
                 .then(() => {
         alert("user is created");
+
                 })
 
         const findUserById = (id) =>// fetch a single user using their ID
@@ -32,26 +33,23 @@ const UserFormEditor = () => {
         return (
         <div>
                 <h2>User Editor</h2>
+                {/*<label>ID</label>*/}
+                {/*<input value={user.id}/><br/>*/}
                 <label>First Name</label>
-                <br/>
                 <input
                     onChange={(e) =>
                         setUser(user =>
                             ({...user, firstName: e.target.value}))}
                     value={user.firstName}/>
-                <br/>
+
                 <label>Last Name</label>
-                <br/>
                 <input
                     onChange={(e) =>
                     setUser(user=>
                         ( {...user,lastName: e.target.value}))}
-                    value={user.lastName}/>
-
-                <br/>
+                    value={user.lastName}/><br/>
 
                 <label>Birthday</label>
-                <br/>
                 <input placeholder={"yyyy-mm-dd"}
                     onChange={(e) =>
                         setUser(user =>
@@ -61,7 +59,6 @@ const UserFormEditor = () => {
                 <br/>
 
                 <label>email</label>
-                <br/>
                 <input
                     onChange={(e) =>
                         setUser(user =>
@@ -71,7 +68,6 @@ const UserFormEditor = () => {
                 <br/>
 
                 <label>Customer value</label>
-                <br/>
                 <input
                     onChange={(e) =>
                         setUser(user =>
@@ -83,7 +79,6 @@ const UserFormEditor = () => {
 
 
                 <label>Username</label>
-                <br/>
                 <input
                     onChange={(e) =>
                         setUser(user =>
@@ -91,7 +86,6 @@ const UserFormEditor = () => {
                     value={user.username}/>
                 <br/>
                 <label>Password</label>
-                <br/>
                 <input
                     onChange={(e) =>
                         setUser(user =>
@@ -99,7 +93,6 @@ const UserFormEditor = () => {
                     value={user.password}/>
 
                 <br/>
-                <br/><br/><br/>
 
 
 
