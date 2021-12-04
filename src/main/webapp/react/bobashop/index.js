@@ -4,7 +4,10 @@ import UserFormEditor from "./users/user-form-editor";
 import OrderList from "./orders/order-list";
 import OrderFormEditor from "./orders/order-form-editor";
 
-const {HashRouter, Route} = window.ReactRouterDOM; 
+import DrinkList from "./drinks/drink-list";
+import DrinkFormEditor from "./drinks/drink-form-editor";
+
+const {HashRouter, Route} = window.ReactRouterDOM;
 const App = () => {
     return (
         <div className="container-fluid">
@@ -20,6 +23,12 @@ const App = () => {
                 </Route>
                 <Route path={["/orders", "/"]} exact={true}>
                     <OrderList/>
+                </Route>
+                <Route path={["/drinks", "/"]} exact={true}>
+                    <DrinkList/>
+                </Route>
+                <Route path="/drinks/:id" exact={true}>
+                    <DrinkFormEditor/>
                 </Route>
             </HashRouter>
         </div>
