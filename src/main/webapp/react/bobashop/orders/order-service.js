@@ -1,7 +1,7 @@
 // TODO: declare URL where server listens for HTTP requests
 //const ORDERS_URL = "https://restuarant-crm.herokuapp.com/api/orders"
 // us-cdbr-east-04.cleardb.com/heroku_c6a34d11c0df5ab?reconnect=true?serverTimezone=UTC
-
+const USERS_URL = "http://localhost:8080/api/users"
  const ORDERS_URL = "http://localhost:8080/api/orders"
 // TODO: retrieve all orders from the server
 export const findAllOrders = () =>
@@ -39,7 +39,17 @@ export const updateOrder = (id, order) => // update a order whose ID is id and n
     })
         .then(response => response.json())// parse response
 
+export const createOrderForUser = (userId, order) =>
+    fetch(`${USERS_URL}/${userId}/orders`, {
+        method: 'POST',
+        body: JSON.stringify(order),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
 
+export const findOrdersForUser = (userId) =>
+    fetch(`${USERS_URL}/${userId}/orders`)
+        .then(response => response.json())
 
 // TODO: export all functions as the API to this service
 export default {
@@ -47,5 +57,7 @@ export default {
     findOrderById,
     deleteOrder,
     createOrder,
-    updateOrder
+    updateOrder,
+    findOrdersForUser,
+    createOrderForUser
 }

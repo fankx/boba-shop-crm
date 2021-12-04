@@ -59,7 +59,8 @@ const OrderFormEditor = () => {
 
             <br/>
 
-            <label>UserID</label>
+            {/*<label>UserID</label>*/}
+            {/*<input style={{pointerEvents=None}}/>*/}
             <br/>
 
             {/*<Link to={`/users/${order.user.id}`}>*/}
