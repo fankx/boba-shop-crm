@@ -38,7 +38,11 @@ const UserList = () => {
                             email: {user.email},
                             birthday: {user.dateOfBirth},
                             customer value: {user.customerValue}
-
+                            <div className="col-1 " style={{ justifyContent: "flex-end" }}>
+                                <Link to={`/users/${user.id}/orders`}>
+                                    Orders
+                                </Link>
+                            </div>
                             <button className="btn btn-danger" style={{ marginLeft: "auto" }}
                                     onClick={() => {if (window.confirm('Are you sure you wish to delete this item?'))
                                         deleteUserTry(user.id)}}>

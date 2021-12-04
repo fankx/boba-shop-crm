@@ -8,9 +8,8 @@ public class DrinkType {
     @Id
     private String drinkType;
 
-    @OneToMany(mappedBy = "drinkType")
-    public List<Drink> drink;
-
+//    @OneToMany(mappedBy = "drinkType")
+//    public List<Drink> drink;
 
     public String getDrinkType() {
         return drinkType;
@@ -20,15 +19,14 @@ public class DrinkType {
         this.drinkType = drinkType;
     }
 
-
-    public List<Drink> getDrink() {
-        return drink;
-    }
-
-    public DrinkType(String drinkType, List<Drink> drink) {
-        this.drinkType = drinkType;
-        this.drink = drink;
-    }
+//    public List<Drink> getDrink() {
+//        return drink;
+//    }
+//
+//    public DrinkType(String drinkType, List<Drink> drink) {
+//        this.drinkType = drinkType;
+//        this.drink = drink;
+//    }
 
     public DrinkType(){};
 }
