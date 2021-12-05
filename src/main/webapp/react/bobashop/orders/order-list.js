@@ -43,22 +43,13 @@ const OrderList = () => {
 
             </h2>
             <h2>Order List</h2>
-            {/*<button className="btn btn-success"*/}
-            {/*    onClick={() => history.push("/orders/new")}>*/}
-            {/*    Add Order*/}
-            {/*</button>*/}
-            <div>
-                <h2>
-                    <Link onClick={() => history.back()}>
-                        <i className="fas fa-arrow-left margin-right-10px"></i>
-                    </Link>
-                    Sections
-                </h2>
+               <div>
+
                 <ul className="list-group">
                     <li className="list-group-item">
                         <div className="row">
                             <div className="col">
-                                <input placeholder="tip Amount"
+                                Tip amount: <input placeholder="tip Amount"
                                        title="Please enter a XXX"
                                        className="form-control"
                                        onChange={(e) => {
@@ -69,13 +60,21 @@ const OrderList = () => {
                                        }
                                        value={newOrder.tip}
                                        />
-                                <input readOnly
+                                Discount Rate: <input
                                        title="Please enter a name for the section"
                                        className="form-control"
-                                       value = {discountRate}
+                                       // value = {discountRate}
                                        onChange={(e) => setNewOrder(newOrder => ({...newOrder, discount: e.target.value}))}
-                                       // value={newOrder.discount}
+                                       value={newOrder.discount}
                                 />
+                                Amount: <input
+                                                      title="Please enter a name for the section"
+                                                      className="form-control"
+
+                                                      onChange={(e) => setNewOrder(newOrder => ({...newOrder, amount: e.target.value}))}
+
+                                                       value = {newOrder.amount}
+                            />
                             </div>
                             <div className="col-2">
                                 <i className="fas float-right fa-plus fa-2x" onClick={() => createOrderForUser(newOrder)}></i>
@@ -85,7 +84,7 @@ const OrderList = () => {
                     {/*{*/}
                     {/*    sections.map(section =>*/}
                     {/*        <li key={section.id} className="list-group-item">*/}
-                    {/*            <SectionEditorInline key={section._id}*/}
+                    {/*            <EditorInline key={section._id}*/}
                     {/*                                 updateSection={updateSection}*/}
                     {/*                                 deleteSection={deleteSection}*/}
                     {/*                                 section={section}/>*/}

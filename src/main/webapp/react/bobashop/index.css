@@ -4,7 +4,9 @@ button.btn {
 }
 
 input.form-control {
+    display: inline;
     margin-bottom: 10px;
+    width: 150px;
 }
 
 .margin-bottom-10px {

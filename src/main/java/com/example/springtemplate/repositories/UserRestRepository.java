@@ -19,7 +19,13 @@ public interface UserRestRepository
             "AND users.id = :userId",
             nativeQuery = true)
     User findUserById(@Param("userId") Integer id);
-
+    @Query(value = "SELECT users.id, customer_value, date_of_birth, email, first_name, last_name, password, username\n" +
+            "FROM users, orders, people\n" +
+            "WHERE orders.user_id = users.id \n" +
+            "AND users.id = people.id\n" +
+            "AND orders.id= 55",
+            nativeQuery = true)
+    User findUserIdByOrderId(@Param("orderId") Integer id);
 //    "SELECT users.id, customer_value, date_of_birth, email, first_name, last_name, password, username \n" +
 //            "FROM users, people \n" +
 //            "WHERE users.id = people.id\n" +

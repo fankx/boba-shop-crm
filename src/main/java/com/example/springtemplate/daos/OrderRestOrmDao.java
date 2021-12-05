@@ -49,6 +49,12 @@ public class OrderRestOrmDao {
         return orderRepository.findOrderById(id);// retrieve single order by ID and return as instance of Order
     }
 
+    @GetMapping("/api/orders/{orderId}/user") // map this method to HTTP GET request execute this method when URL matches /api/orders/ID
+    public User findUserByOrderId(
+            @PathVariable("orderId") Integer id) {// parse order ID from path variable orderId
+        return userRestRepository.findUserIdByOrderId(id);// retrieve single order by ID and return as instance of Order
+    }
+
     @PutMapping("/api/orders/{orderId}")
     public Order updateOrder(
             @PathVariable("orderId") Integer id,
@@ -57,7 +63,7 @@ public class OrderRestOrmDao {
         order.setAmount(orderUpdates.getAmount());
         order.setDiscount(orderUpdates.getDiscount());
         order.setTip(orderUpdates.getTip());
-        order.setUser(orderUpdates.getUser());
+        //order.setUser(orderUpdates.getUser());
 
         return orderRepository.save(order);
     }
