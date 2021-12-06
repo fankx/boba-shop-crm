@@ -166,10 +166,10 @@ const OrderFormEditor = () => {
             </button>
 
 
-            <button className="btn btn-success"
-                    onClick={() => createOrder(order)}>
-                Create Order
-            </button>
+            {/*<button className="btn btn-success"*/}
+            {/*        onClick={() => createOrder(order)}>*/}
+            {/*    Create Order*/}
+            {/*</button>*/}
 
             <button className="btn btn-primary"
                     onClick={() =>
