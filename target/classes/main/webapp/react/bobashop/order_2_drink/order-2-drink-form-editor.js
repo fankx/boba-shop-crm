@@ -1,11 +1,11 @@
-import drinkService from "./drink-service"; // import user-service so we can fetch a single user
+import drinkService from "./order-2-drink-service"; // import user-service so we can fetch a single user
 
 const {useState, useEffect} = React; // import React's hooks
 const {useParams, useHistory} = window.ReactRouterDOM; // import userParams to parse parameters from URL import useHistory
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
-const DrinkFormEditor = () => {
+const Order2DrinkFormEditor = () => {
     const {id} = useParams()// parse "id" from URL
     const [drink, setDrink] = useState({})
     useEffect(() => { // on load
@@ -31,24 +31,23 @@ const DrinkFormEditor = () => {
     return (
         <div>
             <h2>Drink Editor</h2>
-            <label>Drink Name</label>
+            <label>Drink Type</label>
             <br/>
             <input
                 onChange={(e) =>
                     setDrink(drink =>
-                        ({...drink, name: e.target.value}))}
-                value={drink.name}/>
+                        ({...drink, drinkType: e.target.value}))}
+                value={drink.drinkType}/>
+            <br/>
             <br/>
 
-            <label>Price</label>
-            <br/>
-            <input
-                onChange={(e) =>
-                    setDrink(drink =>
-                        ({...drink, price: e.target.value}))}
-                value={drink.price}/>
-            <br/>
-            <br/>
+            {/*<label>Rate</label>*/}
+            {/*<br/>*/}
+            {/*<input*/}
+            {/*    onChange={(e) =>*/}
+            {/*        setDrink(drink =>*/}
+            {/*            ({...drink, rate: e.target.value}))}*/}
+            {/*    value={drink.rate}/>*/}
 
             <button className="btn btn-warning"// add a button
                     onClick={() => { // when you click,use history to go back
@@ -72,4 +71,4 @@ const DrinkFormEditor = () => {
     )
 }
 
-export default DrinkFormEditor
+export default Order2DrinkFormEditor

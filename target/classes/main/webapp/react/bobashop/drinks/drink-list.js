@@ -45,9 +45,10 @@ const DrinkList = () => {
                             </Link>
 
                             {/*TODO: need to figure out how to parse the drinkType*/}
-                            &emsp;Name: {drink.drinkType}
+                            &emsp;Name: {drink.name}
+                            &emsp;Price: {drink.price}
                             {/*TODO: need to connect to the rates table and compute the avg*/}
-                              &emsp;Rating: {},
+                            {/*  &emsp;Rating: {},*/}
                             {/*: name: {drink},*/}
 
                             <button className="btn btn-danger" style={{ marginLeft: "auto" }}

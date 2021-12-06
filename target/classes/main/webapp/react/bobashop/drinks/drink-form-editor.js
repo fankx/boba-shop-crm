@@ -31,23 +31,24 @@ const DrinkFormEditor = () => {
     return (
         <div>
             <h2>Drink Editor</h2>
-            <label>Drink Type</label>
+            <label>Drink Name</label>
             <br/>
             <input
                 onChange={(e) =>
                     setDrink(drink =>
-                        ({...drink, drinkType: e.target.value}))}
-                value={drink.drinkType}/>
-            <br/>
+                        ({...drink, name: e.target.value}))}
+                value={drink.name}/>
             <br/>
 
-            {/*<label>Rate</label>*/}
-            {/*<br/>*/}
-            {/*<input*/}
-            {/*    onChange={(e) =>*/}
-            {/*        setDrink(drink =>*/}
-            {/*            ({...drink, rate: e.target.value}))}*/}
-            {/*    value={drink.rate}/>*/}
+            <label>Price</label>
+            <br/>
+            <input
+                onChange={(e) =>
+                    setDrink(drink =>
+                        ({...drink, price: e.target.value}))}
+                value={drink.price}/>
+            <br/>
+            <br/>
 
             <button className="btn btn-warning"// add a button
                     onClick={() => { // when you click,use history to go back

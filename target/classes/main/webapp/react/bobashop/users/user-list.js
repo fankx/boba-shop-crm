@@ -38,7 +38,7 @@ const UserList = () => {
                             email: {user.email},
                             birthday: {user.dateOfBirth},
                             customer value: {user.customerValue}
-                            <div className="col-1 " style={{ justifyContent: "flex-end" }}>
+                            <div className="col-1 " style={{ marginLeft: "auto" }}>
                                 <Link to={`/users/${user.id}/orders`}>
                                     Orders
                                 </Link>
