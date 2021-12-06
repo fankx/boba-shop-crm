@@ -1,18 +1,23 @@
+import {MenuItem} from "@material-ui/core";
+
 const {Link, useHistory,useParams} = window.ReactRouterDOM;
 import orderToDrinkService from "./order-2-drink-service"
-const { useState, useEffect } = React;
+import drinkService from "../drinks/drink-service"
+import Menu from "@material-ui/core/Menu";
+const { useState, useEffect,Component } = React;
 
 const Order2DrinkList = () => {
 
     const [drinksForThisOrder, setDrinksForThisOrder] = useState([])
     const [newDrinkForThisOrder, setNewDrinkForThisOrder] = useState({})
-    // const [drinks, setDrinks]=useState([])
+    const [drinks, setDrinks]=useState([])
     // const [newDrink, setNewDrink]=useState([])
     const {orderId} = useParams()
 
     useEffect(() => {
         // 這裡有問題連1的飲料都拿不到
-        findDrinksForTheOrder(1)
+        // findDrinksForTheOrder(1)
+        findAllDrinks()
     }, [])
 
     const createDrinkForOrder = (drink) =>
@@ -37,8 +42,8 @@ const Order2DrinkList = () => {
         orderToDrinkService.then(drink => setDrinksForThisOrder(drinksForThisOrder => (drinksForThisOrder.map(drink => drink.id === id ? newDrinkForThisOrder : drink))))
 
     const findAllDrinks = () =>
-        orderToDrinkService.findAllDrinks()
-            .then(drinksForThisOrder => setDrinksForThisOrder(drinksForThisOrder))
+        drinkService.findAllDrinks()
+            .then(drinks => setDrinks(drinks))
 
     const deleteDrinkForOrder = (drinkId) =>
         orderToDrinkService.deleteDrink(orderId,drinkId)
@@ -52,12 +57,28 @@ const Order2DrinkList = () => {
                     <i className="fas fa-arrow-left margin-right-10px"></i>
                 </Link>
             </h2>
+
             <h2>Drinks for this order</h2>
-            <select >
-                <option value="A">Apple</option>
-                <option value="B">Banana</option>
-                <option value="C">Cranberry</option>
-            </select>
+
+            <div className="dropdown">
+                <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Menu
+                      <span className="caret"></span></button>
+                <ul className="dropdown-menu">
+                    {
+                        drinks.map(drink =>
+                            <li className = "list-group-item"
+                                style={{ display: "flex" }}
+                                key={drink.id}
+                                // onClick={createDrinkForOrder(drink)}
+
+                            >
+                                {drink.name} {drink.price}
+                            </li>)
+                    }
+
+                </ul>
+            </div>
 
             <ul className="list-group">
                 {
