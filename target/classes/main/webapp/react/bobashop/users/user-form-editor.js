@@ -101,12 +101,6 @@ const UserFormEditor = () => {
                 <br/>
                 <br/><br/><br/>
 
-
-
-
-
-
-
                 <button className="btn btn-warning"// add a button
                     onClick={() => { // when you click,use history to go back
                             history.back()}}>

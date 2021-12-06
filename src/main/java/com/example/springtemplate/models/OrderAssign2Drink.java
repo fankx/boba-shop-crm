@@ -10,8 +10,6 @@ public class OrderAssign2Drink {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-//    private Integer dishId;
-//    private Integer orderId;
 
     @ManyToOne
     @JsonIgnore
@@ -20,4 +18,20 @@ public class OrderAssign2Drink {
     @ManyToOne
     @JsonIgnore
     private Drink drink;
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Drink getDrink() {
+        return drink;
+    }
+
+    public void setDrink(Drink drink) {
+        this.drink = drink;
+    }
 }
