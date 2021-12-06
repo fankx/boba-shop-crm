@@ -86,6 +86,13 @@ public class Order {
         this.orderAssign2Drinks = dishAssignments;
     }
 
+    public List<OrderAssign2Drink> getOrderAssign2Drinks() {
+        return orderAssign2Drinks;
+    }
+
+    public void setOrderAssign2Drinks(List<OrderAssign2Drink> orderAssign2Drinks) {
+        this.orderAssign2Drinks = orderAssign2Drinks;
+    }
 
     public Order(Integer amount, Float tip, Float discount, User user, List<OrderAssign2Delivery> orderAssign2Deliveries, List<OrderAssign2Drink> dishAssignments) {
         this.amount = amount;
