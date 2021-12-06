@@ -1,7 +1,7 @@
 import {MenuItem} from "@material-ui/core";
 
 const {Link, useHistory,useParams} = window.ReactRouterDOM;
-import orderToDrinkService from "./order-2-drink-service"
+import orderToDrinkService, {deleteDrinkForOrderByDrinkId} from "./order-2-drink-service"
 import drinkService from "../drinks/drink-service"
 import Menu from "@material-ui/core/Menu";
 const { useState, useEffect,Component } = React;
@@ -16,7 +16,7 @@ const Order2DrinkList = () => {
 
     useEffect(() => {
         // 這裡有問題連1的飲料都拿不到
-        // findDrinksForTheOrder(1)
+        findDrinksForTheOrder(orderId)
         findAllDrinks()
     }, [])
 
@@ -46,7 +46,7 @@ const Order2DrinkList = () => {
             .then(drinks => setDrinks(drinks))
 
     const deleteDrinkForOrder = (drinkId) =>
-        orderToDrinkService.deleteDrink(orderId,drinkId)
+        orderToDrinkService.deleteDrinkForOrderByDrinkId(orderId,drinkId)
             .then(() => window.location.reload(false))
 
     return (
@@ -61,7 +61,7 @@ const Order2DrinkList = () => {
             <h2>Drinks for this order</h2>
 
             <div className="dropdown">
-                <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                <button className="btn btn-primary " type="button" data-toggle="dropdown">
                     Menu
                       <span className="caret"></span></button>
                 <ul className="dropdown-menu">
@@ -70,15 +70,15 @@ const Order2DrinkList = () => {
                             <li className = "list-group-item"
                                 style={{ display: "flex" }}
                                 key={drink.id}
-                                // onClick={createDrinkForOrder(drink)}
-
                             >
-                                {drink.name} {drink.price}
+                                {drink.name}
                             </li>)
                     }
-
                 </ul>
             </div>
+
+
+
 
             <ul className="list-group">
                 {
