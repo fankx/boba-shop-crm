@@ -48,13 +48,13 @@ const OrderFormEditor = () => {
 
     }
 
-    const createDrinkForOrder=(drink)=>{
-        orderService.createDrinkForOrder(id, drink)
-            .then(drink => {
-                setNewDrink({name:''})
-                setDrinks(drinks => ([...drinks, drink]))
-            })
-    }
+    // const createDrinkForOrder=(drink)=>{
+    //     orderService.createDrinkForOrder(id, drink)
+    //         .then(drink => {
+    //             setNewDrink({name:''})
+    //             setDrinks(drinks => ([...drinks, drink]))
+    //         })
+    // }
     // const userId = order.user.id
 
     // const showUser = async (id) => {
@@ -149,9 +149,16 @@ const OrderFormEditor = () => {
 
             <br/>
             <Link to={`/drinks`}>
+                Drinks Menu
+
+            </Link>
+            <br/>
+
+            <Link to={`/orders/${id}/drinks`}>
                 Drinks Order
 
             </Link>
+
 
             <br/>
 

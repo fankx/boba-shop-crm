@@ -1,44 +1,47 @@
-const {Link, useHistory} = window.ReactRouterDOM;
-import order2DrinkService from "./order-2-drink-service"
+const {Link, useHistory,useParams} = window.ReactRouterDOM;
+import orderToDrinkService from "./order-2-drink-service"
 const { useState, useEffect } = React;
 
 const Order2DrinkList = () => {
-    const history = useHistory()
+
     const [drinksForThisOrder, setDrinksForThisOrder] = useState([])
-    const [newDrinkForThisOrder, setDrinkForThisOrder] = useState({})
+    const [newDrinkForThisOrder, setNewDrinkForThisOrder] = useState({})
+    // const [drinks, setDrinks]=useState([])
+    // const [newDrink, setNewDrink]=useState([])
     const {orderId} = useParams()
 
     useEffect(() => {
-        findDrinksForOrder(orderId)
+        // 這裡有問題連1的飲料都拿不到
+        findDrinksForTheOrder(1)
     }, [])
 
     const createDrinkForOrder = (drink) =>
-        order2DrinkService.createDrinkForOrder(orderId, drink)
+        orderToDrinkService.createDrinkForOrder(orderId, drink)
             .then (drink => {
-                setDrinkForThisOrder({name:''})
-                setDrinksForThisOrder (drinks => ([...drinks, drink]))
+                setNewDrinkForThisOrder({name:''})
+                setDrinksForThisOrder(drinksForThisOrder => ([...drinksForThisOrder, drink]))
             })
 
-    const findDrinksForOrder = (orderId) =>
-        order2DrinkService.findDrinksForOrder(orderId)
-            .then(drinks => setDrinksForThisOrder(drinks))
+    const findDrinksForTheOrder = (oId) =>
+        orderToDrinkService.findDrinksForThisOrder(oId)
+             .then((drinksForThisOrder) => setDrinksForThisOrder(drinksForThisOrder))
 
     // const createDrink = (drink) =>
-    //     order2DrinkService.createDrink(drink)
+    //     orderToDrinkService.createDrink(drink)
     //         .then(drink => {
     //             setNewDrink({title:''})
     //             setDrinks(drinks => ([...drinks, drink]))
     //         })
 
     const updateDrinkForOrderByDrinkId = (oid, did, drink) =>
-        order2DrinkService.then(drink => setDrinks(drinks => (drinks.map(drink => drink.id === id ? newDrink : drink))))
+        orderToDrinkService.then(drink => setDrinksForThisOrder(drinksForThisOrder => (drinksForThisOrder.map(drink => drink.id === id ? newDrinkForThisOrder : drink))))
 
     const findAllDrinks = () =>
-        order2DrinkService.findAllDrinks()
-            .then(drinks => setDrinks(drinks))
+        orderToDrinkService.findAllDrinks()
+            .then(drinksForThisOrder => setDrinksForThisOrder(drinksForThisOrder))
 
     const deleteDrinkForOrder = (drinkId) =>
-        order2DrinkService.deleteDrink(drinkId)
+        orderToDrinkService.deleteDrink(orderId,drinkId)
             .then(() => window.location.reload(false))
 
     return (
@@ -50,7 +53,7 @@ const Order2DrinkList = () => {
                 </Link>
             </h2>
             <h2>Drinks for this order</h2>
-            <select value={optionsState}>
+            <select >
                 <option value="A">Apple</option>
                 <option value="B">Banana</option>
                 <option value="C">Cranberry</option>
@@ -58,11 +61,11 @@ const Order2DrinkList = () => {
 
             <ul className="list-group">
                 {
-                    drinks.map(drink =>
+                    drinksForThisOrder.map(drink =>
                         <li className = "list-group-item" style={{ display: "flex" }} key={drink.id}>
-                            {/*<Link to={`/drinks/${drink.id}`}>*/}
-                            {/*    ID: {drink.id}*/}
-                            {/*</Link>*/}
+                            <Link to={`/drinks/${drink.id}`}>
+                                ID: {drink.id}
+                            </Link>
 
                             {/*TODO: need to figure out how to parse the drinkType*/}
                             &emsp;Name: {drink.name}
@@ -73,7 +76,7 @@ const Order2DrinkList = () => {
 
                             <button className="btn btn-danger" style={{ marginLeft: "auto" }}
                                     onClick={() => {if (window.confirm('Are you sure you wish to delete this item?'))
-                                        deleteDrink(drink.id)}}>
+                                        deleteDrinkForOrder(drink.id)}}>
                                 Delete
                             </button>
                         </li>)
