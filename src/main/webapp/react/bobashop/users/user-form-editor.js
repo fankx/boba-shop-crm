@@ -1,7 +1,7 @@
 import userService from "./user-service"; // import user-service so we can fetch a single user
 
 const {useState, useEffect} = React; // import React's hooks
-const {useParams, useHistory} = window.ReactRouterDOM; // import userParams to parse parameters from URL import useHistory
+const {useParams, useHistory, Link} = window.ReactRouterDOM; // import userParams to parse parameters from URL import useHistory
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -97,7 +97,11 @@ const UserFormEditor = () => {
                         setUser(user =>
                             ({...user, password: e.target.value}))}
                     value={user.password}/>
+                <br/><br/>
 
+                <Link to={`/users/${user.id}/orders`}>
+                        Orders for this User
+                </Link>
                 <br/>
                 <br/><br/><br/>
 

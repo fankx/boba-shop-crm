@@ -12,9 +12,9 @@ public class Drink {
     private Integer id;
     private String name;
     private Integer price;
-//    @ManyToOne
-//    @JsonIgnore
-//    private DrinkType drinkType;
+
+    @OneToOne
+    private DrinkType drinkType;
 
     @OneToMany(mappedBy = "drink")
     @JsonIgnore
@@ -45,6 +45,13 @@ public class Drink {
         this.id = id;
     }
 
+    public DrinkType getDrinkType() {
+        return drinkType;
+    }
+
+    public void setDrinkType(DrinkType drinkType) {
+        this.drinkType = drinkType;
+    }
 //    public DrinkType getDrinkType() {
 //        return drinkType;
 //    }
