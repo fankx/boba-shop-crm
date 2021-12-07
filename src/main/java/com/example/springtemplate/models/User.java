@@ -14,17 +14,13 @@ public class User extends Person{
     private Integer id;
     private String customerValue;
 
-//    @OneToOne
-//    @JsonIgnore
-//    private Person person;
-
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Order> orders;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "ratedBy")
     @JsonIgnore
-    private List<Rate> rates;
+    private List<Rating> ratings;
 
     public Integer getId() {
         return id;
@@ -58,20 +54,20 @@ public class User extends Person{
         this.orders = orders;
     }
 
-    public List<Rate> getRates() {
-        return rates;
+    public List<Rating> getRates() {
+        return ratings;
     }
 
-    public void setRates(List<Rate> rates) {
-        this.rates = rates;
+    public void setRates(List<Rating> ratings) {
+        this.ratings = ratings;
     }
 
-    public User(String firstName, String lastName, String username, String password, String email, Date dateOfBirth,String customerValue, List<Order> orders, List<Rate> rates) {
+    public User(String firstName, String lastName, String username, String password, String email, Date dateOfBirth,String customerValue, List<Order> orders, List<Rating> ratings) {
         super( firstName,  lastName,  username,  password,  email,  dateOfBirth);
         setCustomerValue("0");
 //        this.person = person;
         this.orders = orders;
-        this.rates = rates;
+        this.ratings = ratings;
     }
 
     public User() {}

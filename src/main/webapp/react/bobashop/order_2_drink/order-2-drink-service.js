@@ -11,7 +11,7 @@ export const createDrinkForOrder = (orderId, drink) =>
     })
         .then(response => response.json())
 
-export const deleteDrinkForOrderByDrinkId = (oid, did) =>
+export const deleteDrinkForOrderByDrinkId = (oid) =>
     fetch(`${ORDERS_URL}/${oid}/drinks`, {
         method: "DELETE"
     })

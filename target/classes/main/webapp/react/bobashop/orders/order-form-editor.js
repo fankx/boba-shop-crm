@@ -9,7 +9,6 @@ const OrderFormEditor = () => {
     const [order, setOrder] = useState({})
     const [drinks, setDrinks] = useState([])
     const [newDrink, setNewDrink] = useState({})
-
     useEffect(() => { // on load
         if (id !== "new") {
             findOrderById(id);
@@ -49,13 +48,13 @@ const OrderFormEditor = () => {
 
     }
 
-    const createDrinkForOrder=(drink)=>{
-        orderService.createDrinkForOrder(id, drink)
-            .then(drink => {
-                setNewDrink({name:''})
-                setDrinks(drinks => ([...drinks, drink]))
-            })
-    }
+    // const createDrinkForOrder=(drink)=>{
+    //     orderService.createDrinkForOrder(id, drink)
+    //         .then(drink => {
+    //             setNewDrink({name:''})
+    //             setDrinks(drinks => ([...drinks, drink]))
+    //         })
+    // }
     // const userId = order.user.id
 
     // const showUser = async (id) => {
@@ -149,10 +148,17 @@ const OrderFormEditor = () => {
                    value={order.tip}/>
 
             <br/>
-            <Link to={`${ORDERS_URL}/${id}/drinks`}>
-                Drinks Included in this Order
+            <Link to={`/drinks`}>
+                Drinks Menu
 
             </Link>
+            <br/>
+
+            <Link to={`/orders/${id}/drinks`}>
+                Drinks Order
+
+            </Link>
+
 
             <br/>
 
@@ -167,10 +173,10 @@ const OrderFormEditor = () => {
             </button>
 
 
-            <button className="btn btn-success"
-                    onClick={() => createOrder(order)}>
-                Create Order
-            </button>
+            {/*<button className="btn btn-success"*/}
+            {/*        onClick={() => createOrder(order)}>*/}
+            {/*    Create Order*/}
+            {/*</button>*/}
 
             <button className="btn btn-primary"
                     onClick={() =>

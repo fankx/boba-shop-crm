@@ -31,7 +31,7 @@ public class OrderAssign2DrinkRestOrmDao {
         return orderAssign2DrinkRestRepository.save(orderAssign2Drink);
     }
 
-//    @PostMapping("/api/orders/{orderId}/drinks")
+//    @PostMapping("/api/orders/{orderId}/drinks/{drinkId}")
 //    public OrderAssign2Drink createDrinkForThisOrder(
 //            @PathVariable("orderId") Integer orderId,
 //            @RequestBody OrderAssign2Drink orderAssign2Drink) {
@@ -64,7 +64,7 @@ public class OrderAssign2DrinkRestOrmDao {
 //        return null;
 //    }
 
-    @DeleteMapping("api/orders/{orderId}/drinks/")
+    @DeleteMapping("api/orders/{orderId}/drinks/{drinkId}")
     public void deleteDrinkForThisOrder(
             @PathVariable("orderId") Integer orderId,
             @PathVariable("drinkId") Integer drinkId) {

@@ -1,10 +1,8 @@
-import sectionService from "../../university/sections/section-service";
-
 const {Link, useParams,useHistory} = window.ReactRouterDOM;
-import orderService, {createOrderForUser} from "./order-service"
+import orderService from "./order-service"
 import SectionEditorInline from "../../university/sections/section-editor-inline";
 const { useState, useEffect } = React;
-// const {Link, useParams, useHistory} = window.ReactRouterDOM;
+
 
 const OrderList = () => {
 

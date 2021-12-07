@@ -7,11 +7,11 @@ const UserList = () => {
     const history = useHistory()
     const [users, setUsers] = useState([])
     useEffect(() => {
-        findAllUsers()
+        findAllUsers
     }, [])
     const findAllUsers = () =>
         userService.findAllUsers()
-            .then(users => setUsers(users))
+            .then(users => setUsers(users));
     const deleteUserTry = (id) =>{
         userService.deleteUser(id)
             .then(() => window.location.reload(false) )}

@@ -24,9 +24,18 @@ public class Drink {
     @JsonIgnore
     private List<DrinkAssign2Cook> drinkAssign2Cooks;
 
-    @OneToMany(mappedBy = "drink")
+    @OneToMany(mappedBy = "rated")
     @JsonIgnore
-    private List<Rate> rates;
+    private List<Rating> ratings;
+
+    @Transient
+    public Integer getAvgRating() {
+        int sum = 0;
+        for (int i = 0; i < ratings.size(); i++) {
+            sum += ratings.get(i).getScore();
+        }
+        return sum / ratings.size();
+    }
 
     public Integer getId() {
         return id;
@@ -43,7 +52,6 @@ public class Drink {
 //    public void setDrinkType(DrinkType drinkType) {
 //        this.drinkType = drinkType;
 //    }
-
 
     public String getName() {
         return name;
@@ -77,22 +85,22 @@ public class Drink {
         this.drinkAssign2Cooks = drinkAssign2Cooks;
     }
 
-    public List<Rate> getRates() {
-        return rates;
+    public List<Rating> getRates() {
+        return ratings;
     }
 
-    public void setRates(List<Rate> rates) {
-        this.rates = rates;
+    public void setRates(List<Rating> ratings) {
+        this.ratings = ratings;
     }
 
     public Drink() {}
 
-    public Drink (Integer id, String name, Integer price, List<OrderAssign2Drink> orderAssign2Drink, List<DrinkAssign2Cook> drinkAssign2Cooks, List<Rate> rates) {
+    public Drink (Integer id, String name, Integer price, List<OrderAssign2Drink> orderAssign2Drink, List<DrinkAssign2Cook> drinkAssign2Cooks, List<Rating> ratings) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.orderAssign2Drink = orderAssign2Drink;
         this.drinkAssign2Cooks = drinkAssign2Cooks;
-        this.rates = rates;
+        this.ratings = ratings;
     }
 }

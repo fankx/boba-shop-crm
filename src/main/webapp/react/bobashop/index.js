@@ -25,7 +25,7 @@ const App = () => {
                 <Route path={["/users/:userId/orders"]} exact={true}>
                     <OrderList/>
                 </Route>
-                <Route path={["/orders/:orderId/drinks"]} exact={true}>
+                <Route path={["/users/:userId/orders/:orderId/drinks"]} exact={true}>
                     <Order2DrinkList/>
                 </Route>
                 <Route path={["/orders"]} exact={true}>
