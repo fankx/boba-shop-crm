@@ -2,7 +2,6 @@ const {Link, useHistory} = window.ReactRouterDOM;
 import drinkService from "./drink-service"
 const { useState, useEffect } = React;
 
-
 const DrinkList = () => {
     const history = useHistory()
     const [drinks, setDrinks] = useState([])
@@ -45,7 +44,7 @@ const DrinkList = () => {
                             </Link>
 
                             {/*TODO: need to figure out how to parse the drinkType*/}
-                            &emsp;Name: {drink.name}
+                            &emsp;Name: {drink.drinkType.drinkType}
                             &emsp;Price: {drink.price}
                             {/*TODO: need to connect to the rates table and compute the avg*/}
                             {/*  &emsp;Rating: {},*/}
@@ -56,11 +55,13 @@ const DrinkList = () => {
                                         deleteDrink(drink.id)}}>
                                 Delete
                             </button>
+                            {JSON.stringify(drink)}
                         </li>)
 
                 }
 
             </ul>
+
         </div>
     )
 }

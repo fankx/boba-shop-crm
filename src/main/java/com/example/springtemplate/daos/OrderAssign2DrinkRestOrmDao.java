@@ -30,6 +30,16 @@ public class OrderAssign2DrinkRestOrmDao {
         orderAssign2Drink.setOrder(order);
         return orderAssign2DrinkRestRepository.save(orderAssign2Drink);
     }
+// TODO 寫完
+    @PostMapping("/api/o2d/{orderId}/drinks")
+    public OrderAssign2Drink createDrinksForCertainOrder(
+            @PathVariable("orderId") Integer orderId,
+            @RequestBody OrderAssign2Drink orderAssign2Drink) {
+        orderAssign2Drink = orderAssign2DrinkRestRepository.save(orderAssign2Drink);
+        Order order = orderRestRepository.findById(orderId).get();
+        orderAssign2Drink.setOrder(order);
+        return orderAssign2DrinkRestRepository.save(orderAssign2Drink);
+    }
 
 //    @PostMapping("/api/orders/{orderId}/drinks")
 //    public OrderAssign2Drink createDrinkForThisOrder(
@@ -51,6 +61,17 @@ public class OrderAssign2DrinkRestOrmDao {
         }
         return drinks;}
 
+
+    @GetMapping("/api/o2d/{oId}/drinks")
+    public List<Drink> findAllDrinksForThisOrderFromO2d(
+            @PathVariable("oId") Integer orderId) {
+        Order order = orderRestRepository.findOrderById(orderId);
+        List<Drink> drinks = new ArrayList<>();
+        for (OrderAssign2Drink orderAssign2Drink : order.getOrderAssign2Drinks()) {
+            drinks.add(orderAssign2Drink.getDrink());
+        }
+        return drinks;}
+
 //    @GetMapping("/api/orders/{orderId}/drinks/{drinkId}")
 //    public Drink findDrinkForThisOrder(
 //            @PathVariable("orderId") Integer orderId,
@@ -64,7 +85,7 @@ public class OrderAssign2DrinkRestOrmDao {
 //        return null;
 //    }
 
-    @DeleteMapping("api/orders/{orderId}/drinks/")
+    @DeleteMapping("api/orders/{orderId}/drinks")
     public void deleteDrinkForThisOrder(
             @PathVariable("orderId") Integer orderId,
             @PathVariable("drinkId") Integer drinkId) {
