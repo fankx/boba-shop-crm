@@ -10,10 +10,9 @@ import org.springframework.stereotype.Repository;
 public interface OrderAssign2DrinkRestRepository
         extends CrudRepository<OrderAssign2Drink, Integer> {
 
+
     @Query (value = "DELETE FROM order_assign_2_drink " +
-            "WHERE order_assign_2_drink.order_id = :orderId " +
-            "AND order_assign_2_drink.drink_id = :drinkId",
+            "WHERE order_assign_2_drink.id = :order2drinkId " ,
             nativeQuery = true)
-    void deleteByOrderIdAndDrinkId(@Param("orderId") Integer oid,
-                                   @Param("drinkId") Integer did);
+    void deleteByOrderIdAndDrinkId(@Param("order2drinkId") Integer id);
 }

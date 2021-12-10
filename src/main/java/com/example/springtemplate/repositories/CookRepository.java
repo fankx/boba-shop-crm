@@ -36,7 +36,7 @@ public interface CookRepository
             nativeQuery = true)
     List<CookEmployee> findCooksByDrinkId(@Param("drinkId") Integer id);
 
-    @Query(value = "SELECT drinks.id, drinks.price, drinks.drink_type_drink_type\n" +
+    @Query(value = "SELECT drinks.id, drinks.price, drinks.drink_type_drink_type, drinks.name\n" +
             "FROM cook_employees, drink_assign_2_cook,drinks\n" +
             "WHERE drink_assign_2_cook.cook_employee_id = cook_employees.id \n" +
             "AND drinks.id = drink_assign_2_cook.drink_id\n" +

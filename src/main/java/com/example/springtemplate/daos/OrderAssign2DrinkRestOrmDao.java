@@ -5,6 +5,7 @@ import com.example.springtemplate.models.Order;
 import com.example.springtemplate.models.OrderAssign2Drink;
 
 import com.example.springtemplate.models.User;
+import com.example.springtemplate.repositories.DrinkRestRepository;
 import com.example.springtemplate.repositories.OrderAssign2DrinkRestRepository;
 import com.example.springtemplate.repositories.OrderRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class OrderAssign2DrinkRestOrmDao {
     OrderAssign2DrinkRestRepository orderAssign2DrinkRestRepository;
     @Autowired
     OrderRestRepository orderRestRepository;
+
+    @Autowired
+    DrinkRestRepository drinkRestRepository;
 
     @PostMapping("/api/orders/{orderId}/drinks")
     public OrderAssign2Drink createDrinksForThisOrder(
@@ -54,23 +58,26 @@ public class OrderAssign2DrinkRestOrmDao {
     @GetMapping("/api/orders/{oId}/drinks")
     public List<Drink> findAllDrinksForThisOrder(
             @PathVariable("oId") Integer orderId) {
-        Order order = orderRestRepository.findOrderById(orderId);
-        List<Drink> drinks = new ArrayList<>();
-        for (OrderAssign2Drink orderAssign2Drink : order.getOrderAssign2Drinks()) {
-            drinks.add(orderAssign2Drink.getDrink());
-        }
-        return drinks;}
+//        Order order = orderRestRepository.findOrderById(orderId);
+//        List<Drink> drinks = new ArrayList<>();
+//        for (OrderAssign2Drink orderAssign2Drink : order.getOrderAssign2Drinks()) {
+//            drinks.add(orderAssign2Drink.getDrink());
+//        }
+//        return drinks;
+          List<Drink> drinks = drinkRestRepository.findDrinksForOrder(orderId);
+          return drinks;
+    }
 
 
-    @GetMapping("/api/o2d/{oId}/drinks")
-    public List<Drink> findAllDrinksForThisOrderFromO2d(
-            @PathVariable("oId") Integer orderId) {
-        Order order = orderRestRepository.findOrderById(orderId);
-        List<Drink> drinks = new ArrayList<>();
-        for (OrderAssign2Drink orderAssign2Drink : order.getOrderAssign2Drinks()) {
-            drinks.add(orderAssign2Drink.getDrink());
-        }
-        return drinks;}
+//    @GetMapping("/api/o2d/{oId}/drinks")
+//    public List<Drink> findAllDrinksForThisOrderFromO2d(
+//            @PathVariable("oId") Integer orderId) {
+//        Order order = orderRestRepository.findOrderById(orderId);
+//        List<Drink> drinks = new ArrayList<>();
+//        for (OrderAssign2Drink orderAssign2Drink : order.getOrderAssign2Drinks()) {
+//            drinks.add(orderAssign2Drink.getDrink());
+//        }
+//        return drinks;}
 
 //    @GetMapping("/api/orders/{orderId}/drinks/{drinkId}")
 //    public Drink findDrinkForThisOrder(
@@ -85,10 +92,9 @@ public class OrderAssign2DrinkRestOrmDao {
 //        return null;
 //    }
 
-    @DeleteMapping("api/orders/{orderId}/drinks")
+    @DeleteMapping("api/o2d/{o2dId}/drinks")
     public void deleteDrinkForThisOrder(
-            @PathVariable("orderId") Integer orderId,
-            @PathVariable("drinkId") Integer drinkId) {
-                orderAssign2DrinkRestRepository.deleteByOrderIdAndDrinkId(orderId, drinkId);
+            @PathVariable("o2dId") Integer o2dId) {
+                orderAssign2DrinkRestRepository.deleteByOrderIdAndDrinkId(o2dId);
     }
 }
