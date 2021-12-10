@@ -55,7 +55,7 @@ const DrinkList = () => {
                                         deleteDrink(drink.id)}}>
                                 Delete
                             </button>
-                            {JSON.stringify(drink)}
+
                         </li>)
 
                 }

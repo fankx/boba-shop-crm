@@ -41,15 +41,7 @@ public class DrinkRestOrmDao {
 //        return orderAssign2DrinkRestRepository.save(orderAssign2Drink);
 //    }
 
-//    @GetMapping("/api/orders/{orderId}/drinks")
-//    public List<Drink> findDrinksForOrder(
-//            @PathVariable("orderId") Integer oid) {
-//        Order order = orderRestRepository.findOrderById(oid);
-//        List<Drink> drinks = new ArrayList<>();
-//        for (OrderAssign2Drink orderAssign2Drink : order.getOrderAssign2Drinks()) {
-//            drinks.add(orderAssign2Drink.getDrink());
-//        }
-//        return drinks;}
+
 
 //    @PutMapping("/api/orders/{orderId}/drinks")
 //    public Order updateDrinksForOrder(

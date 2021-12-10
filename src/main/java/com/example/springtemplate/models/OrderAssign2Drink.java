@@ -34,4 +34,6 @@ public class OrderAssign2Drink {
     public void setDrink(Drink drink) {
         this.drink = drink;
     }
+
+
 }

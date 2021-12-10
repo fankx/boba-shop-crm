@@ -4,7 +4,7 @@ const DRINKS_URL = "http://localhost:8080/api/drinks"
 const ORDERS_URL = "http://localhost:8080/api/orders"
 
 export const createDrinkForOrder = (orderId, drink) =>
-    fetch(`${ORDERS_URL}/${orderId}/drinks`, {
+    fetch(`o2d/${orderId}/drinks`, {
         method: 'POST',
         body: JSON.stringify(drink),
         headers: {'content-type': 'application/json'}
