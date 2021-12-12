@@ -29,7 +29,7 @@ const DrinkList = () => {
     return (
 
         <div>
-            <h2>Drink List</h2>
+            <h2>Menu</h2>
             <button className="btn btn-success"
                     onClick={() => history.push("/drinks/new")}>
                 Add Drink

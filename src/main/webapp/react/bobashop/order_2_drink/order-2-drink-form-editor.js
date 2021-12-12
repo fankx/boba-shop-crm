@@ -1,4 +1,4 @@
-import drinkService from "./order-2-drink-service"; // import user-service so we can fetch a single user
+import drinkService, {deleteDrinkForOrderByO2dId} from "./order-2-drink-service"; // import user-service so we can fetch a single user
 
 const {useState, useEffect} = React; // import React's hooks
 const {useParams, useHistory} = window.ReactRouterDOM; // import userParams to parse parameters from URL import useHistory
@@ -6,11 +6,11 @@ const {useParams, useHistory} = window.ReactRouterDOM; // import userParams to p
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const Order2DrinkFormEditor = () => {
-    const {id} = useParams()// parse "id" from URL
-    const [drink, setDrink] = useState({})
+    const {order2drinkId} = useParams()// parse "id" from URL
+    const [o2d, setO2d] = useState({})
     useEffect(() => { // on load
-        if(id !== "new") {
-            findDrinkById(id)
+        if(order2drinkId !== "new") {
+            findDrinkById(order2drinkId)
         }
     }, []);
     const createDrink = (drink) =>
@@ -21,13 +21,14 @@ const Order2DrinkFormEditor = () => {
 
     const findDrinkById = (id) =>// fetch a single user using their ID
         drinkService.findDrinkById(id)// use user service's new findUserById
-            .then(drink => setDrink(drink)) //// store user from server to local user state variable
+            .then(drink => setO2d(drink)) //// store user from server to local user state variable
 
     const updateDrink = (id, newDrink) =>
         drinkService.updateDrink(id, newDrink)
             .then(() => history.back())
 
-
+    const deleteDrink =()=>
+        drinkService.deleteDrinkForOrderByO2dId()
     return (
         <div>
             <h2>Drink Editor</h2>
@@ -35,9 +36,9 @@ const Order2DrinkFormEditor = () => {
             <br/>
             <input
                 onChange={(e) =>
-                    setDrink(drink =>
+                    setO2d(drink =>
                         ({...drink, drinkType: e.target.value}))}
-                value={drink.drinkType}/>
+                value={o2d.drinkType}/>
             <br/>
             <br/>
 
@@ -57,13 +58,13 @@ const Order2DrinkFormEditor = () => {
 
 
             <button className="btn btn-success"
-                    onClick={() => createDrink(drink)}>
+                    onClick={() => createDrink(o2d)}>
                 Create Drink
             </button>
 
             <button className="btn btn-primary"
-                    onClick={() => updateDrink(drink.id, drink)}>
-                Save
+                    onClick={() => deleteDrink()}>
+                Delete
             </button>
 
         </div>

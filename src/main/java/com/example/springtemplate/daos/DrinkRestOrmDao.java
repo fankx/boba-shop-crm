@@ -2,15 +2,12 @@ package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Drink;
 import com.example.springtemplate.models.Order;
-import com.example.springtemplate.models.OrderAssign2Drink;
-import com.example.springtemplate.models.User;
 import com.example.springtemplate.repositories.DrinkRestRepository;
 import com.example.springtemplate.repositories.OrderAssign2DrinkRestRepository;
 import com.example.springtemplate.repositories.OrderRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -52,7 +49,12 @@ public class DrinkRestOrmDao {
 //        orderUpdates.setOrderAssign2Drinks(orderAssign2Drinks);
 //        return orderRestRepository.save(order);}
 
-
+    @GetMapping("api/drinks/{drinkId}/orders")
+    public List<Order> findOrdersByDrinkId(
+            @PathVariable("drinkId") Integer drinkId
+    ){
+        return orderRestRepository.findOrdersByDrinkId(drinkId);
+    }
 
     @GetMapping("/api/drinks")
     public List<Drink> findAllDrinks() {

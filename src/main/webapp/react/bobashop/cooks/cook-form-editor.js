@@ -70,15 +70,15 @@ const CookFormEditor = () => {
 
                 <br/>
 
-                <label>Manager</label>
-                <br/>
-                <input
-                    onChange={(e) =>
-                        setCook(cook =>
-                            ({...cook, manager: e.target.value}))}
-                    value={cook.manager.id}/>
+                {/*<label>Manager</label>*/}
+                {/*<br/>*/}
+                {/*<input*/}
+                {/*    onChange={(e) =>*/}
+                {/*        setCook(cook =>*/}
+                {/*            ({...cook, manager: e.target.value}))}*/}
+                {/*    value={cook.manager.id}/>*/}
 
-                <br/>
+                {/*<br/>*/}
 
 
 
@@ -118,7 +118,7 @@ const CookFormEditor = () => {
                 </button>
 
                 <button className="btn btn-primary"
-                    onClick={() => updateCook(cook.id, cook)}>
+                    onClick={() => updateCook(id, cook)}>
                         Save Updated
                 </button>
 

@@ -49,7 +49,13 @@ const App = () => {
                 <Route path={["/cooks","/"]} exact={true}>
                     <CookList/>
                 </Route>
-
+                <Route path={"/o2d/:order2drinkId/drinks"} exact={true}>
+                    <OrderFormEditor/>
+                </Route>
+                <Route path={"/o2d/:orderId/drinks/:drinkId"} exact={true}>
+                </Route>
+                <Route path={"/drinks/:drinkId/orders"} exact={true}>
+                </Route>
             </HashRouter>
         </div>
     );
