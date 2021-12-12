@@ -1,16 +1,18 @@
 import drinkService from "./drink-service"; // import user-service so we can fetch a single user
 
 const {useState, useEffect} = React; // import React's hooks
-const {useParams, useHistory} = window.ReactRouterDOM; // import userParams to parse parameters from URL import useHistory
+const {useParams, useHistory,Link} = window.ReactRouterDOM; // import userParams to parse parameters from URL import useHistory
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const DrinkFormEditor = () => {
     const {id} = useParams()// parse "id" from URL
     const [drink, setDrink] = useState({})
+    const [orders, setOrders]= useState({})
     useEffect(() => { // on load
         if(id !== "new") {
             findDrinkById(id)
+            findOrdersByDrinkId(id)
         }
     }, []);
     const createDrink = (drink) =>
@@ -26,6 +28,10 @@ const DrinkFormEditor = () => {
     const updateDrink = (id, newDrink) =>
         drinkService.updateDrink(id, newDrink)
             .then(() => history.back())
+
+    const findOrdersByDrinkId = () =>
+        drinkService.findOrdersByDrinkId(id)
+            .then(orders => setOrders(orders))
 
 
     return (
@@ -66,6 +72,21 @@ const DrinkFormEditor = () => {
                     onClick={() => updateDrink(drink.id, drink)}>
                 Save
             </button>
+
+            <ul className="list-group">
+                {
+
+                    Object.values(orders).map(order =>
+                        <li className = "list-group-item" style={{ display: "flex" }} key={order.id}>
+                            <Link to={`/orders/${order.id}/drinks`}>
+                                OrderID: {order.id}
+                            </Link>
+                        </li>)
+
+
+                }
+
+            </ul>
 
         </div>
 

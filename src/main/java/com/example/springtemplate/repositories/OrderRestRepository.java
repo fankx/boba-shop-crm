@@ -18,5 +18,10 @@ public interface OrderRestRepository
             nativeQuery = true)
     Order findOrderById(@Param("orderId") Integer id);
 
+    @Query(value = "SELECT DISTINCT orders.id,orders.amount,orders.tip,orders.discount,orders.user_id \n" +
+            "FROM  order_assign_2_drink, orders\n" +
+            "WHERE order_assign_2_drink.order_id = orders.id AND order_assign_2_drink.drink_id = :drinkId",
+            nativeQuery = true)
+    List<Order> findOrdersByDrinkId(@Param("drinkId") Integer drinkId);
 
 }

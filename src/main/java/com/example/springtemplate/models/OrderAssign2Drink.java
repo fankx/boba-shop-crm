@@ -16,7 +16,7 @@ public class OrderAssign2Drink {
     private Order order;
 
     @ManyToOne
-    @JsonIgnore
+//    @JsonIgnore
     private Drink drink;
 
     public Order getOrder() {
@@ -35,5 +35,11 @@ public class OrderAssign2Drink {
         this.drink = drink;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

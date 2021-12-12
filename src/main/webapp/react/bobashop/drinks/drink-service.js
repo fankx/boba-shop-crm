@@ -16,6 +16,10 @@ export const findDrinkById = (id) =>
     fetch(`${DRINKS_URL}/${id}`)
         .then(response => response.json())
 
+export const findOrdersByDrinkId = (drinkId) =>
+    fetch(`${DRINKS_URL}/${drinkId}/orders`)
+        .then(response => response.json())
+
 export const deleteDrink = (id) =>
     fetch(`${DRINKS_URL}/${id}`, {
         method: "DELETE"
@@ -35,5 +39,6 @@ export default {
     findDrinkById,
     deleteDrink,
     createDrink,
-    updateDrink
+    updateDrink,
+    findOrdersByDrinkId,
 }

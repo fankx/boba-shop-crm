@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-template" />
+        <module name="boba-shop-crm" />
         <module name="restaurant_crm" />
         <module name="restauran_crm_draft" />
       </profile>
@@ -14,6 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="boba-shop-crm" options="-parameters" />
       <module name="restauran_crm_draft" options="-parameters" />
       <module name="restaurant_crm" options="-parameters" />
       <module name="spring-template" options="-parameters" />
